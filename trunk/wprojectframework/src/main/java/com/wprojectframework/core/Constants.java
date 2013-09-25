@@ -1,5 +1,14 @@
 package com.wprojectframework.core;
 
+/**
+ * 
+ * @class Constants.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
+ * 常量接口
+ */
 public interface Constants {
 	/**
 	 * java 数据类型常量

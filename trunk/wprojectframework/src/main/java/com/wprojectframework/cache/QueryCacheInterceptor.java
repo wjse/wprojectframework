@@ -6,15 +6,16 @@ import com.wprojectframework.cache.annotation.Cache;
 import com.wprojectframework.cache.annotation.CacheType;
 
 /**
- * 查询数据缓存拦截器，基于AOP通过代理模式处理数据是从缓存中取出还是从存储中取出,
- * 该拦截器扫描方法是否存在@QueryCache注解，
- * 如存在在通过@QueryCache中的key值去Cache取得数据
- * 如果缓存里数据不存在，则执行方法本身
+ * 
  * @class CacheInterceptor.java
  * @author wujia
  * @date 2013-9-18
  * @version v1.0
  * @todo
+ * 查询数据缓存拦截器，基于AOP通过代理模式处理数据是从缓存中取出还是从存储中取出,
+ * 该拦截器扫描方法是否存在@QueryCache注解，
+ * 如存在在通过@QueryCache中的key值去Cache取得数据
+ * 如果缓存里数据不存在，则执行方法本身
  */
 public class QueryCacheInterceptor extends AbstractCacheInterceptor{
 	

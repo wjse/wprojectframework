@@ -6,10 +6,14 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 
 /**
- * 自定义JMS抽象接收器
+ * 
+ * @class JMSAbstractReceiver.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
+ * JMS抽象接收器
  * 该类提供工公用行为方法
- * @author lenovo
- *
  */
 public abstract class JMSAbstractReceiver extends JMSAbstractTemplate{
 	

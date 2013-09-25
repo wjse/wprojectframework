@@ -14,10 +14,14 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
+ * 
+ * @class JSONToEntityUtil.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * JSONObject转实体工具类
  * 支持嵌套(级联)属性映射
- * @author wujia
- *
  */
 public class JSONToEntityUtil implements Constants{
 	

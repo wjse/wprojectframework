@@ -9,9 +9,13 @@ import com.wprojectframework.jms.JMSAbstractReceiver;
 import com.wprojectframework.jms.Receiver;
 
 /**
+ * 
+ * @class TopicReceiver.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * 主题消息接收器
- * @author lenovo
- *
  */
 public class TopicReceiver extends JMSAbstractReceiver implements Receiver{
 

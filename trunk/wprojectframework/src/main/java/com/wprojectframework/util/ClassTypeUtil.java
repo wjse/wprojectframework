@@ -7,9 +7,13 @@ import java.lang.reflect.Type;
 import org.springframework.util.Assert;
 
 /**
+ * 
+ * @class ClassTypeUtil.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * 类模板工具类
- * @author lenovo
- *
  */
 public class ClassTypeUtil {
 	

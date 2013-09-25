@@ -5,10 +5,14 @@ import java.util.Map;
 
 
 /**
+ * 
+ * @class Sender.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * 发送消息接口
  * 该接口定义发送行为，并且多行为重载
- * @author lenovo
- *
  */
 public interface Sender extends JMSAbstractInterface{
 	

@@ -10,9 +10,13 @@ import com.wprojectframework.jms.Receiver;
 
 
 /**
+ * 
+ * @class QueueReceiver.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * 队列消息接收器
- * @author lenovo
- *
  */
 public class QueueReceiver extends JMSAbstractReceiver implements Receiver{
 

@@ -3,18 +3,18 @@ package com.wprojectframework.cache;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
-
 import com.wprojectframework.cache.annotation.Cache;
 import com.wprojectframework.util.AopUtil;
 import com.wprojectframework.util.ArrayUtil;
 
 /**
- * 缓存拦截器抽象类
+ * 
  * @class AbstractCacheInterceptor.java
  * @author wujia
  * @date 2013-9-24
  * @version v1.0
  * @todo
+ * 缓存拦截器抽象类
  */
 public abstract class AbstractCacheInterceptor {
 	

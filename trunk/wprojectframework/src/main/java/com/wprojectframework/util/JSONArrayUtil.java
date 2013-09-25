@@ -4,9 +4,14 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * JSONArray扩展工具类
- * @author lenovo
- *
+ * 
+ * @class JSONArrayUtil.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
+ * JSONArray扩展工具类,解决JOSNObject返回JSONArray时
+ * array length只有1个元素时默认不返回JSONArray对象
  */
 public class JSONArrayUtil {
 	

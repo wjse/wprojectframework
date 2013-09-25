@@ -5,12 +5,13 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.aop.support.AopUtils;
 
 /**
- * AOPUtil扩展工具类
+ * 
  * @class AopUtil.java
  * @author wujia
  * @date 2013-9-24
  * @version v1.0
  * @todo
+ * AOPUtil扩展工具类
  */
 public class AopUtil extends AopUtils{
 	

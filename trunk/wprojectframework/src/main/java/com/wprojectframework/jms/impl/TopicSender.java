@@ -9,9 +9,13 @@ import com.wprojectframework.jms.JMSAbstractSender;
 import com.wprojectframework.jms.Sender;
 
 /**
+ * 
+ * @class TopicSender.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * 主题发送器
- * @author lenovo
- *
  */
 public class TopicSender extends JMSAbstractSender implements Sender{
 	

@@ -23,20 +23,20 @@ import org.springframework.core.io.support.ResourcePatternResolver;
  * 可支持带'*'通配符的匹配扫描;
  * IOC中的配置类似如下：
  * <pre>
- *    <&lt>bean id="messageSource" class="com.wujia.test.common.I18NMessageSource" init-method="init" <&gt>
- *       <&lt>property name="scanPath"<&gt>
- *          <&lt>list<&gt>
- *              <&lt>value<&gt>i18n/*_message<&lt>/value<&gt>
- *          <&lt>/list<&gt>
- *       <&lt>/property<&gt>
- *    <&lt>/bean<&gt>
+ *    <bean id="messageSource" class="com.wprojectframework.core.I18NMessageSource" init-method="init">
+ *       <property name="scanPath">
+ *          <list>
+ *              <value>i18n/*_message</value>
+ *          </list>
+ *       </property>
+ *    </bean>
  * </pre>
  * 或者:
- *  <pre>
- *    <&lt>bean id="messageSource" class="com.wujia.test.common.I18NMessageSource" init-method="init" <&gt>
- *       <&lt>property name="scanPackage" value="i18n"<&gt>
- *       <&lt>/property<&gt>
- *    <&lt>/bean<&gt>
+ * <pre>
+ *    <bean id="messageSource" class="com.wprojectframework.core.I18NMessageSource" init-method="init">
+ *       <property name="scanPackage" value="i18n">
+ *       </property>
+ *    </bean>
  * </pre>
  */
 public class I18NMessageSource extends ResourceBundleMessageSource{

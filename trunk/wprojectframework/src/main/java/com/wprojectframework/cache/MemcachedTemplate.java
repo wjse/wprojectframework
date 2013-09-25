@@ -13,10 +13,23 @@ import net.spy.memcached.MemcachedClient;
 import net.spy.memcached.MemcachedClientIF;
 
 /**
- * 缓存操作类,host和port通过spring注入,
- * host默认为localhost,prot默认为11211
- * @author lenovo
- *
+ * 
+ * @class MemcachedTemplate.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
+ * 缓存操作类,缓存服务器地址由spring注入,
+ * 支持多地址集群配置
+ * <pre>
+ * 		<bean id="cacheTemplate" class="com.wprojectframework.cache.MemcachedTemplate">
+ *	    	<property name="address">
+ *	        	<list>
+ *	            	<value>localhost:11211</value>
+ *	        	</list>
+ *	    	</property>
+ *		</bean>
+ * </pre>
  */
 public class MemcachedTemplate implements CacheTemplate{
 	
