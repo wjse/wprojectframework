@@ -7,12 +7,13 @@ import java.lang.annotation.Target;
 
 
 /**
- * 数据缓存专用方法元注解
+ * 
  * @class QueryCache.java
  * @author wujia
  * @date 2013-9-23
  * @version v1.0
  * @todo
+ * 数据缓存专用方法元注解
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

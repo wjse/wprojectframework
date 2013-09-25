@@ -2,9 +2,13 @@ package com.wprojectframework.jms;
 
 
 /**
- * 自定义JMS公用接口
- * @author lenovo
- *
+ * 
+ * @class JMSAbstractInterface.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
+ * JMS公用接口,用于获得链接工厂
  */
 public interface JMSAbstractInterface {
 	
@@ -16,5 +20,9 @@ public interface JMSAbstractInterface {
 	@Deprecated
     public void closeSession();
 	
+	/**
+	 * 获得链接工厂
+	 * @return
+	 */
 	public JMSConnectionFactory getJmsConnectionFactory();
 }

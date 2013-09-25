@@ -7,11 +7,13 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
 
 /**
- * 日期工具类
- * @author WuJia
- * @date 2012-10-10
- * @version since v1.0
+ * 
+ * @class DateUtil.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
  * @todo
+ * 日期工具类
  */
 public class DateUtil {
 	

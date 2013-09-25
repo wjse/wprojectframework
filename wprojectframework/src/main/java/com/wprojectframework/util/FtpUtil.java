@@ -8,11 +8,15 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.log4j.Logger;
 
 /**
+ * 
+ * @class FtpUtil.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * 文件上传工具类
  * 集成apache FTPClient,
- * FTP连接属性来源于集成平台conf.properties
- * @author lenovo
- *
+ * FTP连接属性由spring IOC注入
  */
 public class FtpUtil{
 	
@@ -51,51 +55,106 @@ public class FtpUtil{
 	 */
 	private int size;
 	
+	/**
+	 * logger
+	 */
 	private static final Logger log = Logger.getLogger(FtpUtil.class);
 	
+
+	/**
+	 * @return the client
+	 */
+	public FTPClient getClient() {
+		return client;
+	}
+
+	/**
+	 * @param client the client to set
+	 */
+	public void setClient(FTPClient client) {
+		this.client = client;
+	}
+
+	/**
+	 * @return the host
+	 */
 	public String getHost() {
 		return host;
 	}
 
+	/**
+	 * @param host the host to set
+	 */
 	public void setHost(String host) {
 		this.host = host;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getDir() {
-		return dir;
-	}
-
-	public void setDir(String dir) {
-		this.dir = dir;
-	}
-
+	/**
+	 * @return the port
+	 */
 	public int getPort() {
 		return port;
 	}
 
+	/**
+	 * @param port the port to set
+	 */
 	public void setPort(int port) {
 		this.port = port;
 	}
+
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the dir
+	 */
+	public String getDir() {
+		return dir;
+	}
+
+	/**
+	 * @param dir the dir to set
+	 */
+	public void setDir(String dir) {
+		this.dir = dir;
+	}
+
+	/**
+	 * @return the size
+	 */
 	public int getSize() {
 		return size;
 	}
 
+	/**
+	 * @param size the size to set
+	 */
 	public void setSize(int size) {
 		this.size = size;
 	}
@@ -107,6 +166,7 @@ public class FtpUtil{
 	 * @return
 	 */
 	public String upload(byte[] imgBytes,String imgName){
+		//TODO
 		OutputStream out = null;
 		ByteArrayInputStream bis = null;
 		try {

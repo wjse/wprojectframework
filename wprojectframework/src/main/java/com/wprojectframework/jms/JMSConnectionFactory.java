@@ -9,11 +9,15 @@ import org.apache.log4j.Logger;
 import org.springframework.jms.connection.SingleConnectionFactory;
 
 /**
+ * 
+ * @class JMSConnectionFactory.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * JMS链接工厂，该类使用javax.jms API，具体实现
  * 由spring注入，目前版本是基于activemq，后续如果使用其他厂商实现
  * 该类可能会作修改
- * @author lenovo
- *
  */
 public class JMSConnectionFactory {
 	

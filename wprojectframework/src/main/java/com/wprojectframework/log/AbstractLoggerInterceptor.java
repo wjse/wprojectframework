@@ -6,13 +6,14 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import com.wprojectframework.util.ArrayUtil;
 
 /**
- * 日志拦截器抽象定义，
- * 该类主要定义了环绕通知以及日志打印
+ * 
  * @class AbstractLoggerInterceptor.java
  * @author wujia
  * @date 2013-9-4
  * @version v1.0
  * @todo
+ * 日志拦截器抽象定义，
+ * 该类主要定义了环绕通知以及日志打印
  */
 public abstract class AbstractLoggerInterceptor {
 	

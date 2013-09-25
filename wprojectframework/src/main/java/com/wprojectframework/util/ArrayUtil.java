@@ -1,11 +1,13 @@
 package com.wprojectframework.util;
 
 /**
- * 数组扩展工具类
- * @author WuJia
- * @date 2012-9-27
- * @version since v1.0
+ * 
+ * @class ArrayUtil.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
  * @todo
+ * 数组扩展工具类
  */
 public class ArrayUtil {
 	
@@ -68,6 +70,11 @@ public class ArrayUtil {
 		return false;
 	}
 	
+	/**
+	 * 判断数组是否不为空或存在元素
+	 * @param array
+	 * @return
+	 */
 	public static boolean isNotEmpty(Object[] array){
 		if(null == array || array.length == 0){
 			return false;
@@ -75,6 +82,11 @@ public class ArrayUtil {
 		return true;
 	}
 	
+	/**
+	 * 判断数组是否为空或存在元素
+	 * @param array
+	 * @return
+	 */
 	public static boolean isEmpty(Object[] array){
 		if(null == array || array.length == 0){
 			return true;

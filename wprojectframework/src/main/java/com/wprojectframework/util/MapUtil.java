@@ -8,18 +8,21 @@ import net.sf.cglib.beans.BeanMap;
 import org.apache.log4j.Logger;
 import com.wprojectframework.core.Constants;
 
-
-
-
 /**
- * Map自定义扩展支持工具类
- * @author WuJia
- * @date 2012-9-25
- * @version since v1.0
- * @todo 用于将Object属性以属性名=属性值的形式存入Map
+ * 
+ * @class MapUtil.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
+ * Map自定义扩展支持工具类 
+ * 用于将Object属性以属性名=属性值的形式存入Map
  */
 public class MapUtil implements Constants{
 	
+	/**
+	 * logger
+	 */
 	private static Logger logger = Logger.getLogger(MapUtil.class);
 	
 	/**

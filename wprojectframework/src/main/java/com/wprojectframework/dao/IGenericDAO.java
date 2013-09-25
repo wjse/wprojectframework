@@ -7,10 +7,14 @@ import java.util.Map;
 import org.oproject.framework.orm.PageResult;
 
 /**
- * 公用ibatis DAO接口定义
  * 
- * @author lenovo
- * 
+ * @class IGenericDAO.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo 
+ * 公用ibatis,hibernate DAO接口定义
+ * @param <T> Entity
  */
 public interface IGenericDAO<T> {
 

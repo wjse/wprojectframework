@@ -8,12 +8,13 @@ import org.apache.log4j.Logger;
 import org.oproject.framework.orm.PageResult;
 
 /**
- * 自定义分页标签
+ * 
  * @class PageResultTag.java
  * @author wujia
  * @date 2013-9-12
  * @version v1.0
  * @todo
+ * 自定义分页标签
  */
 public class PageResultTag extends TagSupport{
 
@@ -37,8 +38,14 @@ public class PageResultTag extends TagSupport{
 	 */
 	private String urlFormat;
 	
+	/**
+	 * html
+	 */
 	private StringBuffer sb = new StringBuffer(300);
 	
+	/**
+	 * logger
+	 */
 	private Logger logger = Logger.getLogger(getClass());
 
 	/**

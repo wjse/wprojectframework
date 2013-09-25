@@ -18,11 +18,15 @@ import com.wprojectframework.dao.IGenericDAO;
 import com.wprojectframework.util.ClassTypeUtil;
 
 /**
+ * 
+ * @class GenericHibernateDAOImpl.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo 
  * 通用DAO接口Hibernate抽象实现
  * 分页查询的条件conditionForPage由子类实现
- * @author lenovo
- *
- * @param <T>
+ * @param <T> Entity
  */
 public abstract class GenericHibernateDAOImpl<T extends Object> implements IGenericDAO<T> {
 

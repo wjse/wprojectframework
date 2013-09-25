@@ -1,12 +1,13 @@
 package com.wprojectframework.cache.annotation;
 
 /**
- * 缓存类型
+ * 
  * @class CacheType.java
  * @author wujia
  * @date 2013-9-24
  * @version v1.0
  * @todo
+ * 缓存类型枚举
  */
 public enum CacheType {
 	

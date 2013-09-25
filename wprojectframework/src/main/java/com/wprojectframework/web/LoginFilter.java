@@ -12,17 +12,41 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 
 /**
+ * 
+ * @class LoginFilter.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * framework 用户过滤器
  * 主要用来过滤当前会话域是否存在用户对象，以
  * 判断用户是否登录
- * @author lenovo
- *
  */
 public class LoginFilter implements Filter{
+	
+	/**
+	 * session中登录对象key
+	 */
 	private static final String SESSION_KEY = "sessionKey";
+	
+	/**
+	 * 登录路径key
+	 */
 	private static final String LOGIN_KEY = "login";
+	
+	/**
+	 * 重定向值key
+	 */
 	private static final String REDIRECT_KEY = "redirectKey";
+	
+	/**
+	 * 重定向值
+	 */
 	private static final String REDIRECT_VALUE = "redirectValue";
+	
+	/**
+	 * 默认首页面
+	 */
 	private static final String INDEX = "index";
 	
 	private String sessionKey;

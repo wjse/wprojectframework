@@ -4,18 +4,21 @@ import org.aspectj.lang.ProceedingJoinPoint;
 
 
 /**
+ * 
+ * @class ServiceLoggerInterceptor.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
  * service层日志记录拦截器
  * 记录DEBUG级别日志
- * @author lenovo
- *
  */
 public class ServiceLoggerInterceptor extends AbstractLoggerInterceptor{
 	
     
-    /**
-     * arround
-     * @param point
-     * @return
+    /*
+     * (non-Javadoc)
+     * @see com.wprojectframework.log.AbstractLoggerInterceptor#around(org.aspectj.lang.ProceedingJoinPoint)
      */
 	@Override
     public Object around(ProceedingJoinPoint point){

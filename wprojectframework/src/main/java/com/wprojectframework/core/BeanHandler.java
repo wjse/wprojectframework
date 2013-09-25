@@ -8,9 +8,13 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * IOC容器增强工具类
- * @author lenovo
- *
+ * 
+ * @class BeanHandler.java
+ * @author wujia
+ * @date 2013-9-25
+ * @version v1.0
+ * @todo
+ * spring IOC容器扩展类,方便某些地方获取容器中的内容
  */
 public class BeanHandler implements ApplicationContextAware {
 	
