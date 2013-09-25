@@ -1,0 +1,14 @@
+com.wprojectframework.cache
+com.wprojectframework.cache.annotation
+com.wprojectframework.core
+com.wprojectframework.dao
+com.wprojectframework.dao.impl
+com.wprojectframework.jms
+com.wprojectframework.jms.impl
+com.wprojectframework.log
+com.wprojectframework.model
+com.wprojectframework.service
+com.wprojectframework.service.impl
+com.wprojectframework.testMain.cache
+com.wprojectframework.util
+com.wprojectframework.web
