@@ -5,8 +5,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.wprojectframework.core.Constants;
@@ -82,68 +82,53 @@ public class JSONToEntityUtil implements Constants{
 	 * @throws IllegalAccessException 
 	 * @throws IllegalArgumentException 
 	 */
-	@SuppressWarnings({ "static-access"})
 	private static void setField(Field field,JSONObject result,Object obj) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException{
 		String fName = field.getName();//属性名
 		Class<?> clz = field.getType();//属性类型
 		Method method = obj.getClass().getMethod(ClassTypeUtil.buildMethodName(fName), clz);//获取属性set方法
-		String type = ClassTypeUtil.getClassType(clz).toLowerCase();
-		
+		Object value = getEntity(clz, result, fName);
+		method.invoke(obj, value);
+	}
+	
+	@SuppressWarnings({ "unchecked", "static-access", "rawtypes" })
+	private static <T> T getEntity(Class<?> type,JSONObject result,String key){
 		/*
 		 * 设置具体类型属性值
 		 */
-		if(checkFieldName(type,STRING,result,fName)){//String
-			
-			method.invoke(obj, result.getString(fName));
-			
-		}else if(checkFieldName(type,I,result,fName)){//Integer||int
-			
-			method.invoke(obj, result.getInt(fName));
-			
-		}else if(checkFieldName(type,L,result,fName)){//Long||long
-			
-			method.invoke(obj, result.getLong(fName));
-			
-		}else if(checkFieldName(type,S,result,fName)){//Short||short
-			
-			method.invoke(obj, Short.valueOf(result.getString(fName)));
-			
-		}else if(checkFieldName(type,D,result,fName)){//Double||double
-			
-			method.invoke(obj, result.getDouble(fName));
-			
-		}else if(checkFieldName(type,F,result,fName)){//Float||float
-			
-			method.invoke(obj,Float.valueOf(result.getString(fName)));
-			
-		}else if(checkFieldName(type,BL,result,fName)){//Boolean||boolean
-			
-			method.invoke(obj, result.getBoolean(fName));
-			
-		}else if(checkFieldName(type,B,result,fName)){//Byte||byte
-			
-			method.invoke(obj, Byte.valueOf(result.getString(fName)));
-			
-		}else if(checkFieldName(type,DATE,result,fName)){//java.util.Date
-			
-			method.invoke(obj, result.toBean(result.getJSONObject(fName), Date.class));
-			
-		}else if(checkFieldName(type,LIST,result,fName)){//List
-			
-			setList(result, method, fName, obj);
-			
-		}else if(checkFieldName(type,MAP,result,fName)){//Map
-			
-			setMap(result, method, fName, obj);
-			
-		}else if(field.getType().isArray()){//Array
-			
-			setArray(result, method, fName, clz, obj);
-			
-		}else if(result.containsKey(fName)){//Object
-			
-			setObject(result, method, fName, clz, obj);
-			
+		if(checkFieldName(type.getName(),STRING,result,key)){//String
+			return (T) result.getString(key);
+		}else if(checkFieldName(type.getName(),I,result,key)){//Integer||int
+			return (T) Integer.valueOf(result.getInt(key));
+		}else if(checkFieldName(type.getName(),L,result,key)){//Long||long
+			return (T) Long.valueOf(result.getLong(key));
+		}else if(checkFieldName(type.getName(),S,result,key)){//Short||short
+			return (T) Short.valueOf(result.getString(key));
+		}else if(checkFieldName(type.getName(),D,result,key)){//Double||double
+			return (T) Double.valueOf(result.getDouble(key));
+		}else if(checkFieldName(type.getName(),F,result,key)){//Float||float
+			return (T) Float.valueOf(result.getString(key));
+		}else if(checkFieldName(type.getName(),BL,result,key)){//Boolean||boolean
+			return (T) Boolean.valueOf(result.getBoolean(key));
+		}else if(checkFieldName(type.getName(),B,result,key)){//Byte||byte
+			return (T) Byte.valueOf(result.getString(key));
+		}else if(checkFieldName(type.getName(),DATE,result,key)){//java.util.Date
+			return (T) result.toBean(result.getJSONObject(key), Date.class);
+		}else if(checkFieldName(type.getName(),LIST,result,key)){//List
+			return (T) JSONArray.toCollection(result.getJSONArray(key));
+		}else if(checkFieldName(type.getName(),MAP,result,key)){//Map
+			Map map = new HashMap();
+			JSONObject jObj = result.getJSONObject(key);
+			Set<String> keys = jObj.keySet();
+			for (String s : keys) {
+				map.put(s, jObj.get(s));
+			}
+			return (T) map;
+		}else if(type.isArray()){
+//			JSONArray jArray = result.getJSONArray(fName);
+//			method.invoke(obj, jArray.toArray(jArray, clz.getComponentType()));
+			return (T) JSONArray.toArray(result.getJSONArray(key), type.getComponentType());
+		}else{//Object
+			return (T) getEntity(type, result.getJSONObject(key));
 		}
 	}
 	
@@ -156,82 +141,12 @@ public class JSONToEntityUtil implements Constants{
 	 * @return Boolean
 	 */
 	private static boolean checkFieldName(String type,String fieldType,JSONObject result,String fName){
-		return fieldType.toLowerCase().contains(type)&& result.containsKey(fName);
-	}
-	
-	/**
-	 * 设置Map
-	 * @param result JSON
-	 * @param method setMethod
-	 * @param fName fieldName
-	 * @param obj Entity
-	 * @throws IllegalArgumentException
-	 * @throws IllegalAccessException
-	 * @throws InvocationTargetException
-	 */
-	@SuppressWarnings({ "unchecked", "static-access" })
-	private static void setMap(JSONObject result,Method method,String fName,Object obj) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException{
-		JSONObject jObj = result.getJSONObject(fName);
-		if(jObj.isNullObject()){
-			return;
+		if(INT.equals(type)){
+			type = I;
 		}
-		Class<?> _clz = ClassTypeUtil.getGenericSuperclass(method,0,1);
-		Iterator<String> it = jObj.keys();
-		Map<String,Object> map = new HashMap<String, Object>();
-		while(it.hasNext()){
-			String key = it.next();
-			map.put(it.next(), jObj.toBean(jObj.getJSONObject(key), _clz));
+		if(type.contains(ARRAY_FIX)&& !fieldType.contains(ARRAY_FIX)){
+			return false;
 		}
-		method.invoke(obj, map);
-	}
-	
-	/**
-	 * 设置Object
-	 * @param result JSON
-	 * @param method setMethod
-	 * @param fName fieldName
-	 * @param clz fieldType
-	 * @param obj Entity
-	 * @throws IllegalArgumentException
-	 * @throws IllegalAccessException
-	 * @throws InvocationTargetException
-	 */
-	private static void setObject(JSONObject result,Method method,String fName,Class<?> clz,Object obj) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException{
-		Object temp = getEntity(clz, result.getJSONObject(fName));
-		method.invoke(obj, temp);
-	}
-	
-	/**
-	 * 设置Array
-	 * @param result JSON
-	 * @param method setMethod
-	 * @param fName fieldName
-	 * @param clz fieldType
-	 * @param obj Entity
-	 * @throws IllegalArgumentException
-	 * @throws IllegalAccessException
-	 * @throws InvocationTargetException
-	 */
-	@SuppressWarnings("static-access")
-	private static void setArray(JSONObject result,Method method,String fName,Class<?> clz,Object obj) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException{
-		JSONArray jArray = result.getJSONArray(fName);
-		method.invoke(obj, jArray.toArray(jArray, clz.getComponentType()));
-	}
-	
-	/**
-	 * 设置List
-	 * @param result JSON
-	 * @param method setMethod
-	 * @param fName fieldName
-	 * @param obj Entity
-	 * @throws IllegalArgumentException
-	 * @throws IllegalAccessException
-	 * @throws InvocationTargetException
-	 */
-	@SuppressWarnings({ "static-access"})
-	private static void setList(JSONObject result,Method method,String fName,Object obj) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException{
-		Class<?> _clz = ClassTypeUtil.getGenericSuperclass(method,0,0);
-		JSONArray jArray = result.getJSONArray(fName);
-		method.invoke(obj, jArray.toCollection(jArray, _clz));
+		return type.toLowerCase().contains(fieldType.toLowerCase()) && result.containsKey(fName);
 	}
 }
