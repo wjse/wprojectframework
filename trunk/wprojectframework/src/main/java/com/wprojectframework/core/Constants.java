@@ -13,6 +13,7 @@ public interface Constants {
 	/**
 	 * java 数据类型常量
 	 */
+	public static final String INT = "int";
 	public static final String I = "Integer";
 	public static final String L = "Long";
 	public static final String B = "Byte";
@@ -25,6 +26,7 @@ public interface Constants {
 	public static final String DATE = "Date";
 	public static final String LIST = "List";
 	public static final String MAP = "Map";
+	public static final String ARRAY_FIX= "[L";
 	
 	/**
 	 * 过滤属性名
