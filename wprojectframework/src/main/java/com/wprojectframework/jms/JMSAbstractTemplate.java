@@ -22,6 +22,11 @@ public abstract class JMSAbstractTemplate {
 	}
 	
 	/**
+	 * 目的地
+	 */
+	protected String destination;
+	
+	/**
 	 * 链接工厂
 	 */
 	protected JMSConnectionFactory jmsConnectionFactory;
@@ -47,11 +52,23 @@ public abstract class JMSAbstractTemplate {
 	}
 	
 	/**
+	 * @return the destination
+	 */
+	public String getDestination() {
+		return destination;
+	}
+
+	/**
+	 * @param destination the destination to set
+	 */
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	/**
 	 * 关闭链接
 	 */
 	public void closeSession(){
 		jmsConnectionFactory.close();
 	}
-	
-	
 }

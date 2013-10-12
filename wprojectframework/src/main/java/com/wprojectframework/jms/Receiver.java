@@ -17,15 +17,29 @@ public interface Receiver extends JMSAbstractInterface{
 	
 	/**
 	 * 同步接收消息
-	 * @param destName 
+	 * @param destination 
 	 * @return
 	 */
-	public Message receiveMessage(String destName);
+	public Message receiveMessage(String destination);
+	
+	/**
+	 * 同步接收消息
+	 * 目的地通过IOC注入
+	 * @return
+	 */
+	public Message receiveMessage();
 	
 	/**
 	 * 异步接收消息
-	 * @param destName
+	 * @param destination
 	 * @param listener @see com.stee.dsms.jms.impl.JMSMessageListener
 	 */
-	public void listenMessage(String destName,MessageListener listener);
+	public void listenMessage(String destination,MessageListener listener);
+	
+	/**
+	 * 异步接收消息
+	 * 目的地通过IOC注入
+	 * @param listener
+	 */
+	public void listenMessage(MessageListener listener);
 }
