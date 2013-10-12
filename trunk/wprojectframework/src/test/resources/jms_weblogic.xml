@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	                    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	
+	<!--*************** 
+	    测试用配置
+	 ******************-->
+	 
+	<!-- weblogic链接工厂JNDI配置 -->
+    <bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+       <property name="environment">  
+           <props>  
+               <prop key="java.naming.factory.initial">
+                   weblogic.jndi.WLInitialContextFactory
+               </prop>
+               <prop key="java.naming.provider.url">
+                   t3://192.168.1.88:7001
+               </prop>  
+               <prop key="java.naming.security.principal">
+                   weblogic  
+               </prop>  
+               <prop key="java.naming.security.credentials">  
+                  WELCOME1  
+               </prop>
+           </props>  
+       </property>  
+     </bean>  
+    
+    <!-- jndiConnectionFactory -->  
+    <bean id="jndiConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">  
+        <property name="jndiName" value="ConnectionFactory-ST" /><!-- jms connectionfactory jndi-->  
+        <property name="jndiTemplate" ref="jndiTemplate" />  
+        <!-- <property name="expectedType" value="javax.jms.TopicConnectionFactory" />   -->
+    </bean> 
+    
+    <!-- spring 简单链接工厂 -->
+    <bean id="singleConnectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <property name="targetConnectionFactory" ref="jndiConnectionFactory" />
+    </bean>
+	 
+	 
+	 <!-- 自定义JMS链接工厂 -->
+	 <bean id="jmsConnectionFactory" class="com.wprojectframework.jms.JMSConnectionFactory" init-method="init">
+	     <property name="connectionFactory" ref="singleConnectionFactory"></property>
+	      <!--  <property name="destination" ref="jmsDestination"></property> -->
+	 </bean>
+	 
+	 <!-- 队列消息发送器 -->
+	 <bean id="queueSender" class="com.wprojectframework.jms.impl.QueueSender">
+	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
+	 </bean>
+	 
+	 <!-- 主题消息发送器 -->
+	 <bean id="topicSender" class="com.wprojectframework.jms.impl.TopicSender">
+	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
+	     <property name="destination" value="JMSServer-ST/SystemModule-ST!Topic-ST"></property>
+	 </bean>
+	 
+	 <!-- 队列消息接收器 -->
+	 <bean id="queueReceiver" class="com.wprojectframework.jms.impl.QueueReceiver">
+	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
+	 </bean>
+	 
+	 <!-- 主题消息接收器 -->
+	 <bean id="topicReceiver" class="com.wprojectframework.jms.impl.TopicReceiver">
+	 	 <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
+	 	 <property name="destination" value="JMSServer-ST/SystemModule-ST!Topic-ST"></property>
+	 </bean>
+</beans>
