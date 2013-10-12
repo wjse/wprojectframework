@@ -15,23 +15,13 @@ import javax.jms.MessageListener;
  * JMS抽象接收器
  * 该类提供工公用行为方法
  */
-public abstract class JMSAbstractReceiver extends JMSAbstractTemplate{
+public abstract class JMSAbstractReceiver extends JMSAbstractTemplate  implements Receiver{
 	
 	/**
 	 * 默认线程休眠1000ms
 	 */
 	public static final long DEFAULT_RECEIVE_TIMEOUT = 1000;
-	
-	/**
-	 * 目标名称,由子类设置,如果为空则不适用该值。
-	 * 说明目标由spring注入
-	 */
-	protected String destName;
 
-	protected JMSAbstractReceiver(){
-		
-	}
-	
 	/**
 	 * 获取消费者,由各子类重写实现，
 	 * 再由抽象父类回调使用
@@ -39,7 +29,7 @@ public abstract class JMSAbstractReceiver extends JMSAbstractTemplate{
 	 * @return
 	 * @throws JMSException
 	 */
-	protected abstract MessageConsumer getConsumer() throws JMSException;
+	protected abstract MessageConsumer getConsumer();
 	
 	/**
 	 * 接收消息 
@@ -60,20 +50,60 @@ public abstract class JMSAbstractReceiver extends JMSAbstractTemplate{
 	protected Message receive(long timeout) throws JMSException{
 		MessageConsumer consumer = getConsumer();
 		if(consumer == null){
-			consumer = jmsConnectionFactory.getSession().createConsumer(jmsConnectionFactory.getDestination());
+			logger.error("MessageConsumer is null",new NullPointerException());
+			return null;
 		}
 		Message message = consumer.receive(timeout);
 		logger.info("received message success...");
 		return message;
 	}
 	
-	/**
-	 * 监听消息
-	 * @param listener
-	 * @throws JMSException
+	/*
+	 * (non-Javadoc)
+	 * @see com.wprojectframework.jms.Receiver#listenMessage(javax.jms.MessageListener)
 	 */
-	protected void listenMessage(MessageListener listener) throws JMSException{
+	@Override
+	public void listenMessage(MessageListener listener){
 		MessageConsumer consumer = getConsumer();
-		consumer.setMessageListener(listener);
+		try {
+			consumer.setMessageListener(listener);
+		} catch (JMSException e) {
+			logger.error("consumer set MessageListener error:"+e);
+		}
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.wprojectframework.jms.Receiver#receiveMessage()
+	 */
+	@Override
+	public Message receiveMessage() {
+		Message message = null;
+		try {
+		    message = receive();
+		} catch (JMSException e) {
+			logger.error("Receiving JMS topic message error...",e);
+		}
+		return message;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.wprojectframework.jms.Receiver#receiveMessage(String destination)
+	 */
+	@Override
+	public Message receiveMessage(String destination){
+		this.destination = destination;
+		return receiveMessage();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.wprojectframework.jms.Receiver#listenMessage(String destination,MessageListener listener)
+	 */
+	@Override
+	public void listenMessage(String destination,MessageListener listener){
+		this.destination = destination;
+		listenMessage(listener);
 	}
 }

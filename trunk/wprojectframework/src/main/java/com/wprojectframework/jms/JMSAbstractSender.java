@@ -20,17 +20,8 @@ import javax.jms.TopicPublisher;
  * JMS抽象发送器
  * 该类提供工公用行为方法
  */
-public abstract class JMSAbstractSender extends JMSAbstractTemplate{
+public abstract class JMSAbstractSender extends JMSAbstractTemplate implements Sender{
 	
-	/**
-	 * 目标名称,由子类设置,如果为空则不适用该值。
-	 * 说明目标由spring注入
-	 */
-	protected String destName;
-	
-	protected JMSAbstractSender(){
-		
-	}
 	
 	/**
 	 * 获取文本消息对象
@@ -113,16 +104,15 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate{
 	protected void send(Message message) throws JMSException{
 		MessageProducer producer = getProducer();
 		if(null == producer){
-			producer = jmsConnectionFactory.getSession().createProducer(jmsConnectionFactory.getDestination());
+			logger.error("MessageProducer is null",new NullPointerException());
+			return;
 		}
 		producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);//设置为非持久化消息模式
 		if(producer instanceof TopicPublisher){
 			TopicPublisher publisher = (TopicPublisher) producer;
 			publisher.publish(message);
-			publisher.close();
 		}else{
 			producer.send(message);
-			producer.close();
 		}
 		logger.info("Sent message success...");
 		if(logger.isDebugEnabled()){
@@ -130,6 +120,84 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate{
 			log.append("Sent message to the destination : ");
 			log.append(producer.getDestination());
 			logger.debug(log.toString());
+		}
+		producer.close();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.wprojectframework.jms.Sender#send(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void send(String destination, String str) {
+		this.destination = destination;
+		try {
+			send(getTextMessage(str));
+		} catch (JMSException e) {
+			logger.error("Sending JMS text message error...",e);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.wprojectframework.jms.Sender#send(java.lang.String, java.io.Serializable)
+	 */
+	@Override
+	public void send(String destination, Serializable ser) {
+		this.destination = destination;
+		try {
+			send(getObjectMessage(ser));
+		} catch (JMSException e) {
+			logger.error("Sending JMS object message error...",e);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.wprojectframework.jms.Sender#send(java.lang.String, java.util.Map)
+	 */
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void send(String destination, Map map) {
+		this.destination = destination;
+		try {
+			send(getMapMessage(map));
+		} catch (JMSException e) {
+			logger.error("Sending JMS map message error...",e);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.wprojectframework.jms.Sender#send(java.lang.String)
+	 */
+	@Override
+	public void send(String str) {
+		try {
+			send(getTextMessage(str));
+		} catch (JMSException e) {
+			logger.error("Sending JMS text message error...",e);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.wprojectframework.jms.Sender#send(java.io.Serializable)
+	 */
+	@Override
+	public void send(Serializable ser) {
+		try {
+			send(getObjectMessage(ser));
+		} catch (JMSException e) {
+			logger.error("Sending JMS object message error...",e);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.wprojectframework.jms.Sender#send(java.util.Map)
+	 */
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void send(Map map) {
+		try {
+			send(getMapMessage(map));
+		} catch (JMSException e) {
+			logger.error("Sending JMS map message error...",e);
 		}
 	}
 }

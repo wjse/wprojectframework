@@ -2,7 +2,6 @@ package com.wprojectframework.jms;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Session;
 import org.apache.log4j.Logger;
@@ -41,11 +40,6 @@ public class JMSConnectionFactory {
      */
     private static final Logger logger = Logger.getLogger(JMSConnectionFactory.class);
     
-    /**
-     * 目标，目前版本只支持单目标于测试
-     */
-    private Destination destination;
-    
     private JMSType jmsType;
     
     public JMSType getJmsType() {
@@ -56,19 +50,6 @@ public class JMSConnectionFactory {
 		this.jmsType = jmsType;
 	}
 
-	/**
-	 * @return the destination
-	 */
-	public Destination getDestination() {
-		return destination;
-	}
-
-	/**
-	 * @param destination the destination to set
-	 */
-	public void setDestination(Destination destination) {
-		this.destination = destination;
-	}
 
 	/**
 	 * @return the connectionFactory

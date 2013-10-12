@@ -18,25 +18,25 @@ public interface Sender extends JMSAbstractInterface{
 	
 	/**
 	 * 发送字符串
-	 * @param destName
+	 * @param destination
 	 * @param str
 	 */
-    public void send(String destName,String str);
+    public void send(String destination,String str);
     
     /**
      * 发送对象
-     * @param destName
+     * @param destination
      * @param ser
      */
-    public void send(String destName,Serializable ser);
+    public void send(String destination,Serializable ser);
     
     /**
      * 发送map
-     * @param destName
+     * @param destination
      * @param map
      */
 	@SuppressWarnings("rawtypes")
-	public void send(String destName,Map map);
+	public void send(String destination,Map map);
     
     /**
      * 发送消息，目标由spring配置注入给链接工厂
@@ -44,5 +44,18 @@ public interface Sender extends JMSAbstractInterface{
      * @param str
      */
     public void send(String str);
+    
+    /**
+     * 发送对象
+     * @param ser
+     */
+    public void send(Serializable ser);
+    
+    /**
+     * 发送map
+     * @param map
+     */
+	@SuppressWarnings("rawtypes")
+	public void send(Map map);
 }
 
