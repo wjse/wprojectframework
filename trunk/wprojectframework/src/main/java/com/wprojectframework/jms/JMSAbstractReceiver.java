@@ -21,6 +21,25 @@ public abstract class JMSAbstractReceiver extends JMSAbstractTemplate  implement
 	 * 默认线程休眠1000ms
 	 */
 	public static final long DEFAULT_RECEIVE_TIMEOUT = 1000;
+	
+	/**
+	 * 线程休眠毫秒数,初始化为默认休眠时间
+	 */
+	private long timeout = DEFAULT_RECEIVE_TIMEOUT;
+	
+	/**
+	 * @return the timeout
+	 */
+	public long getTimeout() {
+		return timeout;
+	}
+
+	/**
+	 * @param timeout the timeout to set
+	 */
+	public void setTimeout(long timeout) {
+		this.timeout = timeout;
+	}
 
 	/**
 	 * 获取消费者,由各子类重写实现，
@@ -29,7 +48,7 @@ public abstract class JMSAbstractReceiver extends JMSAbstractTemplate  implement
 	 * @return
 	 * @throws JMSException
 	 */
-	protected abstract MessageConsumer getConsumer();
+	protected abstract MessageConsumer getConsumer() throws JMSException;
 	
 	/**
 	 * 接收消息 
@@ -38,7 +57,7 @@ public abstract class JMSAbstractReceiver extends JMSAbstractTemplate  implement
 	 * @throws JMSException
 	 */
 	protected Message receive() throws JMSException{
-		return receive(DEFAULT_RECEIVE_TIMEOUT);
+		return receive(timeout);
 	}
 	
 	/**
@@ -47,13 +66,13 @@ public abstract class JMSAbstractReceiver extends JMSAbstractTemplate  implement
 	 * @return
 	 * @throws JMSException
 	 */
-	protected Message receive(long timeout) throws JMSException{
+	protected Message receive(long time) throws JMSException{
 		MessageConsumer consumer = getConsumer();
 		if(consumer == null){
 			logger.error("MessageConsumer is null",new NullPointerException());
 			return null;
 		}
-		Message message = consumer.receive(timeout);
+		Message message = consumer.receive(time);
 		logger.info("received message success...");
 		return message;
 	}
@@ -64,8 +83,8 @@ public abstract class JMSAbstractReceiver extends JMSAbstractTemplate  implement
 	 */
 	@Override
 	public void listenMessage(MessageListener listener){
-		MessageConsumer consumer = getConsumer();
 		try {
+			MessageConsumer consumer = getConsumer();
 			consumer.setMessageListener(listener);
 		} catch (JMSException e) {
 			logger.error("consumer set MessageListener error:"+e);
