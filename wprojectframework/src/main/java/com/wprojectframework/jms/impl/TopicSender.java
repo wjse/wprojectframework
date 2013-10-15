@@ -16,7 +16,6 @@ import com.wprojectframework.jms.JMSAbstractSender;
  */
 public class TopicSender extends JMSAbstractSender{
 	
-	
 	/*
 	 * (non-Javadoc)
 	 * @see com.stee.dsms.jms.JMSAbstractSender#getProducer()
@@ -26,7 +25,7 @@ public class TopicSender extends JMSAbstractSender{
 		if(this.destination == null){
 			return null;
 		}
-		Topic topic = jmsConnectionFactory.getSession().createTopic(this.destination);
-		return jmsConnectionFactory.getSession().createProducer(topic);
+		Topic topic = getSession().createTopic(this.destination);
+		return getSession().createProducer(topic);
 	}
 }

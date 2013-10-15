@@ -20,49 +20,14 @@ public class QueueReceiver extends JMSAbstractReceiver implements Receiver{
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.stee.dsms.jms.Receiver#receiveMessage(java.lang.String)
-	 */
-//	@Override
-//	public Message receiveMessage(String destName) {
-//		this.destName = destName;
-//		Message message = null;
-//		try {
-//			message = receive();
-//		} catch (JMSException e) {
-//			logger.error("Receiving JMS queue message error...",e);
-//		}
-//		return message;
-//	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.stee.dsms.jms.Receiver#listenMessage(java.lang.String, javax.jms.MessageListener)
-	 */
-//	@Override
-//	public void listenMessage(String destName,MessageListener listener) {
-//		try {
-//			this.destName = destName;
-//			listenMessage(listener);
-//		} catch (JMSException e) {
-//			logger.error("Listenning JMS topic message error...",e);
-//		} 
-//	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see com.stee.dsms.jms.JMSAbstractReceiver#getConsumer()
 	 */
 	@Override
-	protected MessageConsumer getConsumer() {
+	protected MessageConsumer getConsumer() throws JMSException {
 		if(this.destination == null){
 			return null;
 		}
-		try {
-			Queue queue = jmsConnectionFactory.getSession().createQueue(this.destination);
-			return jmsConnectionFactory.getSession().createConsumer(queue);
-		} catch (JMSException e) {
-			logger.error("createConsumer error : "+e);
-		}
-		return null;
+		Queue queue = getSession().createQueue(this.destination);
+		return getSession().createConsumer(queue);
 	}
 }
