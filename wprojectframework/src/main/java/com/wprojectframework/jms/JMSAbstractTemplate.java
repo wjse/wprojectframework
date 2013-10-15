@@ -1,5 +1,7 @@
 package com.wprojectframework.jms;
 
+import javax.jms.Session;
+
 import org.apache.log4j.Logger;
 
 
@@ -29,7 +31,7 @@ public abstract class JMSAbstractTemplate {
 	/**
 	 * 链接工厂
 	 */
-	protected JMSConnectionFactory jmsConnectionFactory;
+	private JMSConnectionFactory jmsConnectionFactory;
 	
 	/**
 	 * logger
@@ -70,5 +72,13 @@ public abstract class JMSAbstractTemplate {
 	 */
 	public void closeSession(){
 		jmsConnectionFactory.close();
+	}
+	
+	/**
+	 * 获取会话session
+	 * @return
+	 */
+	public Session getSession(){
+		return jmsConnectionFactory.getSession();
 	}
 }
