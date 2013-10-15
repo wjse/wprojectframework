@@ -62,6 +62,7 @@
 	 <bean id="topicSender" class="com.wprojectframework.jms.impl.TopicSender">
 	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
 	     <property name="destination" value="JMSServer-ST/SystemModule-ST!Topic-ST"></property>
+	     <property name="messagePersistent" value="2"></property>
 	 </bean>
 	 
 	 <!-- 队列消息接收器 -->
@@ -73,5 +74,12 @@
 	 <bean id="topicReceiver" class="com.wprojectframework.jms.impl.TopicReceiver">
 	 	 <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
 	 	 <property name="destination" value="JMSServer-ST/SystemModule-ST!Topic-ST"></property>
+	 </bean>
+	 
+	 <!-- 主题持久订阅接收器 -->
+	 <bean id="topicDurableSubscriber" class="com.wprojectframework.jms.impl.TopicDurableSubscriber">
+	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
+	     <property name="destination" value="JMSServer-ST/SystemModule-ST!Topic-ST"></property>
+	     <property name="subscriber" value="TopicDurableSubscriber"></property>
 	 </bean>
 </beans>

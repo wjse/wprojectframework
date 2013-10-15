@@ -28,12 +28,18 @@ public class TestJMSReceiver {
 	Receiver topicReceiver;
 	
 	/**
+	 * 主题持久订阅接收器
+	 */
+	Receiver topicDurableSubscriber;
+	
+	/**
 	 * before
 	 */
 	@Before
 	public void before(){
 		queueReceiver = BeanHandler.getBean("queueReceiver");
 		topicReceiver = BeanHandler.getBean("topicReceiver");
+		topicDurableSubscriber = BeanHandler.getBean("topicDurableSubscriber");
 	}
 	
 	/**
@@ -87,6 +93,15 @@ public class TestJMSReceiver {
 			}
 			Thread.sleep(1000);
 		}
+	}
+	
+	/**
+	 * 持久订阅者测试
+	 */
+//	@Test
+	public void testTopicDurableSubscriber(){
+		Message message = topicDurableSubscriber.receiveMessage();
+		System.out.println(message);
 	}
 	
 }
