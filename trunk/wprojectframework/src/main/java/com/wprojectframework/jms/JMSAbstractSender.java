@@ -22,7 +22,27 @@ import javax.jms.TopicPublisher;
  */
 public abstract class JMSAbstractSender extends JMSAbstractTemplate implements Sender{
 	
+	/**
+	 * 消息持久化,默认为非持久
+	 * 可通过IOC设置起为持久消息
+	 * 持久消息值为2
+	 */
+	private int messagePersistent = DeliveryMode.NON_PERSISTENT;
 	
+	/**
+	 * @return the messagePersistent
+	 */
+	public int getMessagePersistent() {
+		return messagePersistent;
+	}
+
+	/**
+	 * @param messagePersistent the messagePersistent to set
+	 */
+	public void setMessagePersistent(int messagePersistent) {
+		this.messagePersistent = messagePersistent;
+	}
+
 	/**
 	 * 获取文本消息对象
 	 * @return
@@ -39,7 +59,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @throws JMSException
 	 */
 	protected TextMessage getTextMessage(String str) throws JMSException{
-		return jmsConnectionFactory.getSession().createTextMessage(str);
+		return getSession().createTextMessage(str);
 	}
 	
 	/**
@@ -58,7 +78,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @throws JMSException
 	 */
 	protected ObjectMessage getObjectMessage(Serializable arg) throws JMSException{
-		return jmsConnectionFactory.getSession().createObjectMessage(arg);
+		return getSession().createObjectMessage(arg);
 	}
 	
 	/**
@@ -86,7 +106,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 */
 	@SuppressWarnings("rawtypes")
 	protected MapMessage getMapMessage(Map map) throws JMSException{
-		MapMessage message = jmsConnectionFactory.getSession().createMapMessage();
+		MapMessage message = getSession().createMapMessage();
 		if(map != null){
 			for (Object key : map.keySet()) {
 				message.setObject(key.toString(), map.get(key));
@@ -107,7 +127,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 			logger.error("MessageProducer is null",new NullPointerException());
 			return;
 		}
-		producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);//设置为非持久化消息模式
+		producer.setDeliveryMode(messagePersistent);
 		if(producer instanceof TopicPublisher){
 			TopicPublisher publisher = (TopicPublisher) producer;
 			publisher.publish(message);
