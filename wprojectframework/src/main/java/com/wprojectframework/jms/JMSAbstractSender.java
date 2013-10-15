@@ -48,7 +48,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @return
 	 * @throws JMSException
 	 */
-	protected TextMessage getTextMessage() throws JMSException{
+	protected TextMessage getTextMessage() {
 		return getTextMessage(null);
 	}
 	
@@ -58,8 +58,13 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @return
 	 * @throws JMSException
 	 */
-	protected TextMessage getTextMessage(String str) throws JMSException{
-		return getSession().createTextMessage(str);
+	protected TextMessage getTextMessage(String str) {
+		try {
+			return getSession().createTextMessage(str);
+		} catch (JMSException e) {
+			logger.error("get Text message error.",e);
+		}
+		return null;
 	}
 	
 	/**
@@ -67,7 +72,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @return
 	 * @throws JMSException
 	 */
-	protected ObjectMessage getObjectMessage() throws JMSException{
+	protected ObjectMessage getObjectMessage() {
 		return getObjectMessage(null);
 	}
 	
@@ -77,8 +82,13 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @return
 	 * @throws JMSException
 	 */
-	protected ObjectMessage getObjectMessage(Serializable arg) throws JMSException{
-		return getSession().createObjectMessage(arg);
+	protected ObjectMessage getObjectMessage(Serializable arg) {
+		try {
+			return getSession().createObjectMessage(arg);
+		} catch (JMSException e) {
+			logger.error("get Object message error.",e);
+		}
+		return null;
 	}
 	
 	/**
@@ -86,7 +96,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @return
 	 * @throws JMSException
 	 */
-	protected MapMessage getMapMessage() throws JMSException{
+	protected MapMessage getMapMessage() {
 		return getMapMessage(null);
 	}
 	
@@ -105,14 +115,20 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @throws JMSException
 	 */
 	@SuppressWarnings("rawtypes")
-	protected MapMessage getMapMessage(Map map) throws JMSException{
-		MapMessage message = getSession().createMapMessage();
-		if(map != null){
-			for (Object key : map.keySet()) {
-				message.setObject(key.toString(), map.get(key));
+	protected MapMessage getMapMessage(Map map) {
+		MapMessage message;
+		try {
+			message = getSession().createMapMessage();
+			if(map != null){
+				for (Object key : map.keySet()) {
+					message.setObject(key.toString(), map.get(key));
+				}
 			}
+			return message;
+		} catch (JMSException e) {
+			logger.error("get Map message error.", e);
 		}
-		return message;
+		return null;
 	} 
 	
 	/**
@@ -121,27 +137,25 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 * @param message
 	 * @throws JMSException
 	 */
-	protected void send(Message message) throws JMSException{
-		MessageProducer producer = getProducer();
-		if(null == producer){
-			logger.error("MessageProducer is null",new NullPointerException());
-			return;
+	private void send(Message message){
+		try {
+			MessageProducer producer = getProducer();
+			if(null == producer){
+				logger.error("MessageProducer is null",new NullPointerException());
+				return;
+			}
+			producer.setDeliveryMode(messagePersistent);
+			if(producer instanceof TopicPublisher){
+				TopicPublisher publisher = (TopicPublisher) producer;
+				publisher.publish(message);
+			}else{
+				producer.send(message);
+			}
+			logger.info("Sent message success to "+producer.getDestination());
+			producer.close();
+		} catch (JMSException e) {
+			logger.error("Sending JMS message error.Session is rollback.",e);
 		}
-		producer.setDeliveryMode(messagePersistent);
-		if(producer instanceof TopicPublisher){
-			TopicPublisher publisher = (TopicPublisher) producer;
-			publisher.publish(message);
-		}else{
-			producer.send(message);
-		}
-		logger.info("Sent message success...");
-		if(logger.isDebugEnabled()){
-			StringBuilder log = new StringBuilder();
-			log.append("Sent message to the destination : ");
-			log.append(producer.getDestination());
-			logger.debug(log.toString());
-		}
-		producer.close();
 	}
 
 	/* (non-Javadoc)
@@ -150,11 +164,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	@Override
 	public void send(String destination, String str) {
 		this.destination = destination;
-		try {
-			send(getTextMessage(str));
-		} catch (JMSException e) {
-			logger.error("Sending JMS text message error...",e);
-		}
+		send(getTextMessage(str));
 	}
 
 	/* (non-Javadoc)
@@ -163,11 +173,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	@Override
 	public void send(String destination, Serializable ser) {
 		this.destination = destination;
-		try {
-			send(getObjectMessage(ser));
-		} catch (JMSException e) {
-			logger.error("Sending JMS object message error...",e);
-		}
+		send(getObjectMessage(ser));
 	}
 
 	/* (non-Javadoc)
@@ -177,11 +183,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	@Override
 	public void send(String destination, Map map) {
 		this.destination = destination;
-		try {
-			send(getMapMessage(map));
-		} catch (JMSException e) {
-			logger.error("Sending JMS map message error...",e);
-		}
+		send(getMapMessage(map));
 	}
 
 	/* (non-Javadoc)
@@ -189,11 +191,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 */
 	@Override
 	public void send(String str) {
-		try {
-			send(getTextMessage(str));
-		} catch (JMSException e) {
-			logger.error("Sending JMS text message error...",e);
-		}
+		send(getTextMessage(str));
 	}
 
 	/* (non-Javadoc)
@@ -201,11 +199,7 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	 */
 	@Override
 	public void send(Serializable ser) {
-		try {
-			send(getObjectMessage(ser));
-		} catch (JMSException e) {
-			logger.error("Sending JMS object message error...",e);
-		}
+		send(getObjectMessage(ser));
 	}
 
 	/* (non-Javadoc)
@@ -214,10 +208,6 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void send(Map map) {
-		try {
-			send(getMapMessage(map));
-		} catch (JMSException e) {
-			logger.error("Sending JMS map message error...",e);
-		}
+		send(getMapMessage(map));
 	}
 }
