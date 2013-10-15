@@ -27,8 +27,8 @@ public class QueueSender extends JMSAbstractSender implements Sender{
 		if(this.destination == null){
 			return null;
 		}
-		Queue queue = jmsConnectionFactory.getSession().createQueue(this.destination);
-		return jmsConnectionFactory.getSession().createProducer(queue);
+		Queue queue = getSession().createQueue(this.destination);
+		return getSession().createProducer(queue);
 	}
 }
 

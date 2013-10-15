@@ -21,16 +21,11 @@ public class TopicReceiver extends JMSAbstractReceiver{
 	 * @see com.stee.dsms.jms.JMSAbstractReceiver#getConsumer()
 	 */
 	@Override
-	protected MessageConsumer getConsumer(){
+	protected MessageConsumer getConsumer() throws JMSException{
 		if(this.destination == null){
 			return null;
 		}
-		try {
-			Topic topic = jmsConnectionFactory.getSession().createTopic(this.destination);
-			return jmsConnectionFactory.getSession().createConsumer(topic);
-		} catch (JMSException e) {
-			logger.error("createConsumer error : "+e);
-		}
-		return null;
+		Topic topic = getSession().createTopic(this.destination);
+		return getSession().createConsumer(topic);
 	}
 }
