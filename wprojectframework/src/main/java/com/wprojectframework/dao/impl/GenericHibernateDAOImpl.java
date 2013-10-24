@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.Assert;
 
-import com.wprojectframework.dao.IGenericDAO;
+import com.wprojectframework.dao.GenericDAO;
 import com.wprojectframework.util.ClassTypeUtil;
 
 /**
@@ -28,7 +28,7 @@ import com.wprojectframework.util.ClassTypeUtil;
  * 分页查询的条件conditionForPage由子类实现
  * @param <T> Entity
  */
-public abstract class GenericHibernateDAOImpl<T extends Object> implements IGenericDAO<T> {
+public abstract class GenericHibernateDAOImpl<T extends Object> implements GenericDAO<T> {
 
 	/**
 	 * 泛型类模板
@@ -143,8 +143,8 @@ public abstract class GenericHibernateDAOImpl<T extends Object> implements IGene
 	 * @see com.stee.dsms.dao.IGenericDAO#add(java.lang.Object)
 	 */
 	@Override
-	public void add(Object obj) {
-		getSession().save(obj);
+	public Object add(Object obj) {
+		return getSession().save(obj);
 	}
 
 	/*

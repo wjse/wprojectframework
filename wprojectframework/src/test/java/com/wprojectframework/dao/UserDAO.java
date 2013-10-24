@@ -4,6 +4,6 @@ import org.oproject.framework.orm.ibatis.bytecode.codegenerator.annotations.Dyna
 import com.wprojectframework.model.User;
 
 @DynamicIbatisDAO(value="UserDAO")
-public interface UserDAO extends IGenericDAO<User>{
+public interface UserDAO extends GenericDAO<User>{
 
 }

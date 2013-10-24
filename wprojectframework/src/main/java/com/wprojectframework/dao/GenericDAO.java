@@ -16,7 +16,7 @@ import org.oproject.framework.orm.PageResult;
  * 公用ibatis,hibernate DAO接口定义
  * @param <T> Entity
  */
-public interface IGenericDAO<T> {
+public interface GenericDAO<T> {
 
 	/* 查询单条记录 */
 	/**
@@ -73,7 +73,7 @@ public interface IGenericDAO<T> {
 	 * Hibernate是根据Session.save(obj)进行新增的
 	 * @param Object obj
 	 */
-	void add(Object obj);
+	Object add(Object obj);
 
 	/* 修改 */
 	/**
