@@ -52,7 +52,7 @@ public class JSONToEntityUtil implements Constants{
 	 */
 	public static <T> T getEntity(Class<T> clazz,JSONObject result){
 		T t = null;
-		if(null == result || result.isEmpty()){
+		if(null == result || result.isNullObject()){
 			return t;
 		}
 		try {
