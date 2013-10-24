@@ -44,8 +44,8 @@ public class UserDAOStump implements UserDAO{
 	}
 
 	@Override
-	public void add(Object obj) {
-		
+	public Object add(Object obj) {
+		return null;
 	}
 
 	@Override
