@@ -29,20 +29,6 @@ public abstract class AbstractCacheInterceptor {
 	protected CacheTemplate cacheTemplate;
 	
 	/**
-	 * @return the logger
-	 */
-	public Logger getLogger() {
-		return logger;
-	}
-
-	/**
-	 * @param logger the logger to set
-	 */
-	public void setLogger(Logger logger) {
-		this.logger = logger;
-	}
-
-	/**
 	 * @return the cacheTemplate
 	 */
 	public CacheTemplate getCacheTemplate() {
