@@ -64,7 +64,7 @@ public class ClassTypeUtil {
 	 * @param fieldName
 	 * @return
 	 */
-	public static String buildMethodName(String fieldName){
+	public static String buildSetMethodName(String fieldName){
 		StringBuilder builder = new StringBuilder();
 		builder.append("set");
 		builder.append(fieldName.replaceFirst(String.valueOf(fieldName.charAt(0)), String.valueOf(fieldName.charAt(0)).toUpperCase()));

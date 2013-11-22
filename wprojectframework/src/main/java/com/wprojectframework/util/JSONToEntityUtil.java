@@ -85,7 +85,7 @@ public class JSONToEntityUtil implements Constants{
 	private static void setField(Field field,JSONObject result,Object obj) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException{
 		String fName = field.getName();//属性名
 		Class<?> clz = field.getType();//属性类型
-		Method method = obj.getClass().getMethod(ClassTypeUtil.buildMethodName(fName), clz);//获取属性set方法
+		Method method = obj.getClass().getMethod(ClassTypeUtil.buildSetMethodName(fName), clz);//获取属性set方法
 		Object value = getEntity(clz, result, fName);
 		method.invoke(obj, value);
 	}
