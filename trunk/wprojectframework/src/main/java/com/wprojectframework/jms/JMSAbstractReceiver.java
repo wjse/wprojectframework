@@ -74,6 +74,9 @@ public abstract class JMSAbstractReceiver extends JMSAbstractTemplate  implement
 		}
 		Message message = consumer.receive(time);
 		logger.info("received message success...");
+		if(logger.isDebugEnabled()){
+			logger.debug("message is : " +message);
+		}
 		return message;
 	}
 	

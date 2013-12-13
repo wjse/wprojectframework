@@ -24,7 +24,7 @@ public abstract class JMSAbstractTemplate {
 	}
 	
 	/**
-	 * 目的地
+	 * 根据业务需求使用单一目的地,由IOC注入
 	 */
 	protected String destination;
 	
