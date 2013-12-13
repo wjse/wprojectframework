@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import com.wprojectframework.core.BeanHandler;
+import com.wprojectframework.jms.sender.Sender;
 
 /**
  * JMS发送器测试用例

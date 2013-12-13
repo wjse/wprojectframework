@@ -1,6 +1,7 @@
-package com.wprojectframework.jms;
+package com.wprojectframework.jms.sender;
 import java.io.Serializable;
 import java.util.Map;
+
 import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
@@ -9,6 +10,8 @@ import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 import javax.jms.TopicPublisher;
+
+import com.wprojectframework.jms.JMSAbstractTemplate;
 
 /**
  * 

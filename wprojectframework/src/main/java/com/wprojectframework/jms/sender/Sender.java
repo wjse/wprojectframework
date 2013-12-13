@@ -1,7 +1,9 @@
-package com.wprojectframework.jms;
+package com.wprojectframework.jms.sender;
 
 import java.io.Serializable;
 import java.util.Map;
+
+import com.wprojectframework.jms.JMSAbstractInterface;
 
 
 /**

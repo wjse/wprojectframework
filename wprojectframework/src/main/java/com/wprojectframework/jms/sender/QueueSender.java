@@ -1,10 +1,8 @@
-package com.wprojectframework.jms.impl;
+package com.wprojectframework.jms.sender;
 
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
-import com.wprojectframework.jms.JMSAbstractSender;
-import com.wprojectframework.jms.Sender;
 
 
 /**

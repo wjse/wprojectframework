@@ -28,27 +28,27 @@
 	 </bean>
 	 
 	 <!-- 队列消息发送器 -->
-	 <bean id="queueSender" class="com.wprojectframework.jms.impl.QueueSender">
+	 <bean id="queueSender" class="com.wprojectframework.jms.sender.QueueSender">
 	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
 	 </bean>
 	 
 	 <!-- 主题消息发送器 -->
-	 <bean id="topicSender" class="com.wprojectframework.jms.impl.TopicSender">
+	 <bean id="topicSender" class="com.wprojectframework.jms.sender.TopicSender">
 	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
 	 </bean>
 	 
 	 <!-- 队列消息接收器 -->
-	 <bean id="queueReceiver" class="com.wprojectframework.jms.impl.QueueReceiver">
+	 <bean id="queueReceiver" class="com.wprojectframework.jms.receiver.QueueReceiver">
 	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
 	 </bean>
 	 
 	 <!-- 主题消息接收器 -->
-	 <bean id="topicReceiver" class="com.wprojectframework.jms.impl.TopicReceiver">
+	 <bean id="topicReceiver" class="com.wprojectframework.jms.receiver.TopicReceiver">
 	 	 <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
 	 </bean>
 	 
 	 <!-- 主题持久订阅接收器 -->
-	 <bean id="topicDurableSubscriber" class="com.wprojectframework.jms.impl.TopicDurableSubscriber">
+	 <bean id="topicDurableSubscriber" class="com.wprojectframework.jms.receiver.TopicDurableSubscriber">
 	     <property name="jmsConnectionFactory" ref="jmsConnectionFactory"></property>
 	     <property name="destination" value="topic1"></property>
 	     <property name="subscriber" value="TopicDurableSubscriber"></property>

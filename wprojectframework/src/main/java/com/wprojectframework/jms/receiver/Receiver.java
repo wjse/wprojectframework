@@ -1,7 +1,9 @@
-package com.wprojectframework.jms;
+package com.wprojectframework.jms.receiver;
 
 import javax.jms.Message;
 import javax.jms.MessageListener;
+
+import com.wprojectframework.jms.JMSAbstractInterface;
 
 /**
  * 

@@ -1,10 +1,8 @@
-package com.wprojectframework.jms.impl;
+package com.wprojectframework.jms.receiver;
 
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
 import javax.jms.Queue;
-import com.wprojectframework.jms.JMSAbstractReceiver;
-import com.wprojectframework.jms.Receiver;
 
 
 /**

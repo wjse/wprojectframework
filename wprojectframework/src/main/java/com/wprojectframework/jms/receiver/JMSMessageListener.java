@@ -1,4 +1,4 @@
-package com.wprojectframework.jms.impl;
+package com.wprojectframework.jms.receiver;
 
 import javax.jms.Message;
 import javax.jms.MessageListener;
