@@ -152,6 +152,9 @@ public abstract class JMSAbstractSender extends JMSAbstractTemplate implements S
 				producer.send(message);
 			}
 			logger.info("Sent message success to "+producer.getDestination());
+			if(logger.isDebugEnabled()){
+				logger.debug("message is : " +message);
+			}
 			producer.close();
 		} catch (JMSException e) {
 			logger.error("Sending JMS message error.Session is rollback.",e);

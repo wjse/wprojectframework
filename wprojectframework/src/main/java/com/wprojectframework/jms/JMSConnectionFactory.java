@@ -40,12 +40,22 @@ public class JMSConnectionFactory {
      */
     private static final Logger logger = Logger.getLogger(JMSConnectionFactory.class);
     
+    /**
+     * JMS厂商类型
+     */
     private JMSType jmsType;
     
+    /**
+     * @return jmsType
+     */
     public JMSType getJmsType() {
 		return jmsType;
 	}
 
+    /**
+     * 
+     * @param jmsType the jmsType to set
+     */
 	public void setJmsType(JMSType jmsType) {
 		this.jmsType = jmsType;
 	}
@@ -76,13 +86,16 @@ public class JMSConnectionFactory {
 				connection.start();
 				session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 				logger.info("JMS connect success...");
-				initJmsType();
+				checkJmsType();
 			} catch (JMSException e) {
 				logger.error("JMSConnectionFactory init error...",e);
 			}
     }
 	
-	private void initJmsType(){
+	/**
+	 * 检查JMS厂商类型
+	 */
+	private void checkJmsType(){
 		String clzName = connectionFactory.getClass().getName().toLowerCase();
 		if(connectionFactory instanceof SingleConnectionFactory){
 			SingleConnectionFactory sFactory = (SingleConnectionFactory) connectionFactory;
@@ -134,6 +147,14 @@ public class JMSConnectionFactory {
 		}
 	}
 	
+	/**
+	 * 厂商类型枚举
+	 * @class JMSConnectionFactory.java
+	 * @author wujia
+	 * @date 2013年12月13日
+	 * @version v1.0
+	 * @todo
+	 */
 	public enum JMSType{
 		ActiveMQ,
 		Weblogic,

@@ -35,8 +35,10 @@ public class TopicDurableSubscriber extends JMSAbstractReceiver{
 		this.subscriber = subscriber;
 	}
 
-
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.wprojectframework.jms.JMSAbstractReceiver#getConsumer()
+	 */
 	@Override
 	protected MessageConsumer getConsumer() throws JMSException {
 		if(this.destination == null){
