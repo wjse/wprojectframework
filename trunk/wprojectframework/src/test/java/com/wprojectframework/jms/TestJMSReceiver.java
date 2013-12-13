@@ -9,7 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.wprojectframework.core.BeanHandler;
-import com.wprojectframework.jms.impl.JMSMessageListener;
+import com.wprojectframework.jms.receiver.JMSMessageListener;
+import com.wprojectframework.jms.receiver.Receiver;
 
 /**
  * JMS接收器测试用例

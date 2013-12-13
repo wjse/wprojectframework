@@ -1,9 +1,11 @@
-package com.wprojectframework.jms;
+package com.wprojectframework.jms.receiver;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
+
+import com.wprojectframework.jms.JMSAbstractTemplate;
 
 /**
  * 
