@@ -84,6 +84,17 @@ public class TestJMSSender {
 //		topicSender.closeSession();
 //		
 //	}
+	
+//	@Test
+	public void testWebsphereMQQueueSend(){
+		queueSender.send("queue1","hello");
+	}
+	
+//	@Test
+	public void testWebsphereMQTopicSend(){
+		topicSender.send("topic1", "hello topic1");
+	}
+	
 }
 
 class User implements Serializable{
