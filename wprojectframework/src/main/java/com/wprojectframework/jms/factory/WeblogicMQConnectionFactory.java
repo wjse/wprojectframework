@@ -200,9 +200,9 @@ public class WeblogicMQConnectionFactory extends AbstractConnectionFactory imple
 		try {
 			jndiObjectFactory.afterPropertiesSet();
 		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
+			logger.error(e);
 		} catch (NamingException e) {
-			e.printStackTrace();
+			logger.error(e);
 		}
 	}
 	
