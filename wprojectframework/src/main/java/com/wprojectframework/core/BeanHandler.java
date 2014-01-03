@@ -5,7 +5,6 @@ import java.util.Map;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 
@@ -22,11 +21,6 @@ public class BeanHandler implements ApplicationContextAware {
 	 * IOC context
 	 */
 	private static ApplicationContext context;
-	
-	/**
-	 * 配置文件classpath,方便单元测试，可通过IOC注入
-	 */
-	private static String _contextPath = "classpath*:/applicationContext.xml";
 	
 	/**
 	 * 服务器本地语言环境key
@@ -57,7 +51,6 @@ public class BeanHandler implements ApplicationContextAware {
 	 */
 	@SuppressWarnings("unchecked")
 	public static <E> E getBean(String name){
-		initContext();
 		return (E) context.getBean(name);
 	}
 	
@@ -67,7 +60,6 @@ public class BeanHandler implements ApplicationContextAware {
 	 * @return Map
 	 */
 	public static <E> Map<String,E> getBeans(Class<E> clz){
-		initContext();
 		return context.getBeansOfType(clz);
 	}
 	
@@ -96,14 +88,5 @@ public class BeanHandler implements ApplicationContextAware {
 	 */
 	private static void setApplicationContextStatic(ApplicationContext arg0){
 		context = arg0;
-	}
-
-	/**
-	 * 初始化IOC容器,此方法服务于单元测试通过classpath获取IOC
-	 */
-	private static void initContext(){
-		if(null == context){
-			context = new ClassPathXmlApplicationContext(_contextPath);
-		}
 	}
 }
