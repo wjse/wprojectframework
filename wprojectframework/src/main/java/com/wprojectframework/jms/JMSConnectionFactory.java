@@ -5,7 +5,6 @@ import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.Session;
 import org.apache.log4j.Logger;
-import org.springframework.jms.connection.SingleConnectionFactory;
 
 /**
  * 
@@ -97,12 +96,6 @@ public class JMSConnectionFactory {
 	 */
 	private void checkJmsType(){
 		String clzName = connectionFactory.getClass().getName().toLowerCase();
-		if(connectionFactory instanceof SingleConnectionFactory){
-			SingleConnectionFactory sFactory = (SingleConnectionFactory) connectionFactory;
-			clzName = sFactory.getTargetConnectionFactory().getClass().getName().toLowerCase();
-		}else{
-			clzName = connectionFactory.getClass().getName().toLowerCase();
-		}
 		if(clzName.contains(JMSType.ActiveMQ.toString().toLowerCase())){
 			this.jmsType = JMSType.ActiveMQ;
 		}else if(clzName.contains(JMSType.Weblogic.toString().toLowerCase())){
