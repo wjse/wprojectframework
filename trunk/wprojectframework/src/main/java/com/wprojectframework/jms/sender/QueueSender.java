@@ -7,12 +7,15 @@ import javax.jms.Queue;
 
 /**
  * 
- * @class QueueSender.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * 队列消息发送器
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     JMSAbstractSender
+ * @see     Sender
+ * @since   JDK1.6
  */
 public class QueueSender extends JMSAbstractSender implements Sender{
 	

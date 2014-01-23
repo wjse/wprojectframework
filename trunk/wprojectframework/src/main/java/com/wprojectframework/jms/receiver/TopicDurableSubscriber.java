@@ -6,12 +6,14 @@ import javax.jms.Topic;
 
 /**
  * 
- * @class TopicDurableSubscriber.java
- * @author wujia
- * @date 2013-10-15
+ * <pre>
+ * 主题持久化消息订阅者,subscriber可由IOC注入
+ * </pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 主题持久化消息订阅者
+ * @date    2014年1月23日
+ * @see     JMSAbstractReceiver
+ * @since   JDK1.6
  */
 public class TopicDurableSubscriber extends JMSAbstractReceiver{
 	

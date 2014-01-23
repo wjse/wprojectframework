@@ -8,13 +8,15 @@ import com.wprojectframework.jms.JMSAbstractInterface;
 
 /**
  * 
- * @class Sender.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * 发送消息接口
  * 该接口定义发送行为，并且多行为重载
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     JMSAbstractInterface
+ * @since   JDK1.6
  */
 public interface Sender extends JMSAbstractInterface{
 	

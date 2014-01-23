@@ -15,13 +15,17 @@ import net.sf.json.JSONObject;
 
 /**
  * 
- * @class JSONToEntityUtil.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * JSONObject转实体工具类
  * 支持嵌套(级联)属性映射
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     Constants
+ * @see     JSONObject
+ * @see     JSONArray
+ * @since   JDK1.6
  */
 public class JSONToEntityUtil implements Constants{
 	

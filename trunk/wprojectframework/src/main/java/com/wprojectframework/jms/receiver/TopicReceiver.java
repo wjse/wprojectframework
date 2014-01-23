@@ -6,12 +6,12 @@ import javax.jms.Topic;
 
 /**
  * 
- * @class TopicReceiver.java
- * @author wujia
- * @date 2013-9-25
+ * <pre>主题消息接收器</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 主题消息接收器
+ * @date    2014年1月23日
+ * @see     JMSAbstractReceiver
+ * @since   JDK1.6
  */
 public class TopicReceiver extends JMSAbstractReceiver{
 

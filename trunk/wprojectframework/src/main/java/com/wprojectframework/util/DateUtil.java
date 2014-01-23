@@ -8,12 +8,13 @@ import org.apache.commons.lang.time.DateFormatUtils;
 
 /**
  * 
- * @class DateUtil.java
- * @author wujia
- * @date 2013-9-25
+ * <pre>日期工具类</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 日期工具类
+ * @date    2014年1月23日
+ * @see     DateFormatUtils
+ * @see     SimpleDateFormat
+ * @since   JDK1.6
  */
 public class DateUtil {
 	

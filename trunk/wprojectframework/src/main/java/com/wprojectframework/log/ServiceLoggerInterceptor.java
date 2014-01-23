@@ -5,13 +5,15 @@ import org.aspectj.lang.ProceedingJoinPoint;
 
 /**
  * 
- * @class ServiceLoggerInterceptor.java
- * @author wujia
- * @date 2013-9-25
+ * <pre>
+ *  service层日志记录拦截器
+ *  记录DEBUG级别日志
+ * </pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * service层日志记录拦截器
- * 记录DEBUG级别日志
+ * @date    2014年1月23日
+ * @see     AbstractLoggerInterceptor
+ * @since   JDK1.6
  */
 public class ServiceLoggerInterceptor extends AbstractLoggerInterceptor{
 	

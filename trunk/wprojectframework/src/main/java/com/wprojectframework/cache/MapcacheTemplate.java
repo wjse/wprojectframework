@@ -5,13 +5,14 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @class MapcacheTemplate.java
- * @author wujia
- * @date 2013-10-11
- * @version v1.0
- * @todo
- * 内存缓存模板
+ * <pre>内存缓存模板</pre>
  * 使用HashMap作为缓存载体
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     CacheTemplate
+ * @see     HashMap
+ * @since   JDK1.6
  */
 public class MapcacheTemplate implements CacheTemplate{
 	

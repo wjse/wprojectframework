@@ -13,14 +13,16 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * 
- * @class LoginFilter.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * framework 用户过滤器
  * 主要用来过滤当前会话域是否存在用户对象，以
  * 判断用户是否登录
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     Filter
+ * @since   JDK1.6
  */
 public class LoginFilter implements Filter{
 	

@@ -8,12 +8,11 @@ import java.lang.annotation.Target;
 
 /**
  * 
- * @class QueryCache.java
- * @author wujia
- * @date 2013-9-23
+ * <pre>数据缓存专用方法元注解</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 数据缓存专用方法元注解
+ * @date    2014年1月23日
+ * @since   JDK1.6
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

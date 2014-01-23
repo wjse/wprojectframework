@@ -13,20 +13,24 @@ import org.oproject.framework.orm.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.Assert;
-
 import com.wprojectframework.dao.GenericDAO;
 import com.wprojectframework.util.ClassTypeUtil;
 
 /**
  * 
- * @class GenericHibernateDAOImpl.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo 
+ * <pre>
  * 通用DAO接口Hibernate抽象实现
  * 分页查询的条件conditionForPage由子类实现
+ * </pre>
  * @param <T> Entity
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     GenericDAO
+ * @see     ClassTypeUtil
+ * @see     SessionFactory
+ * @see     Criteria
+ * @since   JDK1.6
  */
 public abstract class GenericHibernateDAOImpl<T extends Object> implements GenericDAO<T> {
 

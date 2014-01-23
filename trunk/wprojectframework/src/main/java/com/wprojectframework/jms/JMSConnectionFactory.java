@@ -8,14 +8,15 @@ import org.apache.log4j.Logger;
 
 /**
  * 
- * @class JMSConnectionFactory.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * JMS链接工厂，该类使用javax.jms API，具体实现
- * 由spring注入，目前版本是基于activemq，后续如果使用其他厂商实现
- * 该类可能会作修改
+ * 由spring注入各实现连接工厂
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     ConnectionFactory
+ * @since   JDK1.6
  */
 public class JMSConnectionFactory {
 	

@@ -8,13 +8,13 @@ import org.oproject.framework.orm.PageResult;
 
 /**
  * 
- * @class IGenericDAO.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo 
- * 公用ibatis,hibernate DAO接口定义
+ * <pre>公用ibatis,hibernate DAO接口定义</pre>
  * @param <T> Entity
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     PageResult
+ * @since   JDK1.6
  */
 public interface GenericDAO<T> {
 

@@ -9,12 +9,12 @@ import org.oproject.framework.orm.PageResult;
 
 /**
  * 
- * @class PageResultTag.java
- * @author wujia
- * @date 2013-9-12
+ * <pre>自定义分页标签</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 自定义分页标签
+ * @date    2014年1月23日
+ * @see     TagSupport
+ * @since   JDK1.6
  */
 public class PageResultTag extends TagSupport{
 

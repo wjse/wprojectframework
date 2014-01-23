@@ -14,22 +14,25 @@ import net.spy.memcached.MemcachedClientIF;
 
 /**
  * 
- * @class MemcachedTemplate.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * 缓存操作类,缓存服务器地址由spring注入,
  * 支持多地址集群配置
- * <pre>
- * 		<bean id="cacheTemplate" class="com.wprojectframework.cache.MemcachedTemplate">
- *	    	<property name="address">
- *	        	<list>
- *	            	<value>localhost:11211</value>
- *	        	</list>
- *	    	</property>
- *		</bean>
+ *     <pre>
+ * 		    <bean id="cacheTemplate" class="com.wprojectframework.cache.MemcachedTemplate">
+ *	    	   <property name="address">
+ *	        	   <list>
+ *	            	   <value>localhost:11211</value>
+ *	        	   </list>
+ *	    	   </property>
+ *		    </bean>
+ *     </pre>
  * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     CacheTemplate
+ * @see     net.spy.memcached.*
+ * @since   JDK1.6
  */
 public class MemcachedTemplate implements CacheTemplate{
 	

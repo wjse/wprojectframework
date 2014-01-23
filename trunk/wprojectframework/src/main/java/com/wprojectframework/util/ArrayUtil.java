@@ -2,12 +2,11 @@ package com.wprojectframework.util;
 
 /**
  * 
- * @class ArrayUtil.java
- * @author wujia
- * @date 2013-9-25
+ * <pre>数组扩展工具类</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 数组扩展工具类
+ * @date    2014年1月23日
+ * @since   JDK1.6
  */
 public class ArrayUtil {
 	

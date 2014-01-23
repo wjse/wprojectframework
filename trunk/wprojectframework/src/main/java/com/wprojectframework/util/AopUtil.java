@@ -6,12 +6,12 @@ import org.springframework.aop.support.AopUtils;
 
 /**
  * 
- * @class AopUtil.java
- * @author wujia
- * @date 2013-9-24
+ * <pre>AOPUtil扩展工具类</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * AOPUtil扩展工具类
+ * @date    2014年1月23日
+ * @see     AopUtils
+ * @since   JDK1.6
  */
 public class AopUtil extends AopUtils{
 	

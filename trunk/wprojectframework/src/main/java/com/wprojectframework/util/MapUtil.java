@@ -10,13 +10,17 @@ import com.wprojectframework.core.Constants;
 
 /**
  * 
- * @class MapUtil.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * Map自定义扩展支持工具类 
  * 用于将Object属性以属性名=属性值的形式存入Map
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     Constants
+ * @see     HashMap
+ * @see     BeanMap
+ * @since   JDK1.6
  */
 public class MapUtil implements Constants{
 	
