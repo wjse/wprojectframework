@@ -7,13 +7,15 @@ import com.wprojectframework.jms.JMSAbstractInterface;
 
 /**
  * 
- * @class Receiver.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * 接收消息接口
  * 该接口定义接收行为，提供同步接收以及异步接收两种接收机制
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     JMSAbstractInterface
+ * @since   JDK1.6
  */
 public interface Receiver extends JMSAbstractInterface{
 	

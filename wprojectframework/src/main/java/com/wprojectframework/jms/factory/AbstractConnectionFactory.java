@@ -3,14 +3,16 @@ package com.wprojectframework.jms.factory;
 import org.apache.log4j.Logger;
 
 /**
- * @class AbstractConnectionFactory.java
- * @author wujia
- * @date 2013年12月13日
- * @version v1.0
- * @todo
+ * 
+ * <pre>
  * 自定义JMS链接工厂实现抽象类
  * 抽象定义了公共设置环境参数行为
  * 以及链接路径参数
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @since   JDK1.6
  */
 public abstract class AbstractConnectionFactory {
 	

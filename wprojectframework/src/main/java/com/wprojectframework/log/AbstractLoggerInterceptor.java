@@ -2,18 +2,19 @@ package com.wprojectframework.log;
 
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
-
 import com.wprojectframework.util.ArrayUtil;
 
 /**
  * 
- * @class AbstractLoggerInterceptor.java
- * @author wujia
- * @date 2013-9-4
- * @version v1.0
- * @todo
+ * <pre>
  * 日志拦截器抽象定义，
  * 该类主要定义了环绕通知以及日志打印
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     ProceedingJoinPoint
+ * @since   JDK1.6
  */
 public abstract class AbstractLoggerInterceptor {
 	

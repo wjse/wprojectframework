@@ -5,14 +5,16 @@ import javax.jms.MessageListener;
 
 /**
  * 
- * @class JMSMessageListener.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * 自定义消息监听器
  * 在调用方获取非空消息实体后，请一定要手动cleanMessage
  * 否则易出错
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     MessageListener
+ * @since   JDK1.6
  */
 public class JMSMessageListener implements MessageListener{
 	

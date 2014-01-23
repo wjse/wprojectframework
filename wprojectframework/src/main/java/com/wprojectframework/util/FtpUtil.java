@@ -9,14 +9,16 @@ import org.apache.log4j.Logger;
 
 /**
  * 
- * @class FtpUtil.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * 文件上传工具类
  * 集成apache FTPClient,
  * FTP连接属性由spring IOC注入
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     FTPClient
+ * @since   JDK1.6
  */
 public class FtpUtil{
 	

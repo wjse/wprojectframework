@@ -8,12 +8,12 @@ import org.springframework.context.ApplicationContextAware;
 
 /**
  * 
- * @class BeanHandler.java
- * @author wujia
- * @date 2013-9-25
+ * <pre>spring IOC容器扩展类,方便某些地方获取容器中的内容</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * spring IOC容器扩展类,方便某些地方获取容器中的内容
+ * @date    2014年1月23日
+ * @see     ApplicationContextAware
+ * @since   JDK1.6
  */
 public class BeanHandler implements ApplicationContextAware {
 	

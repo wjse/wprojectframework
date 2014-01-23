@@ -8,17 +8,22 @@ import com.ibm.msg.client.jms.JmsFactoryFactory;
 import com.ibm.msg.client.wmq.WMQConstants;
 
 /**
-
- * @class WebsphereMQConnectionFactory.java
- * @author wujia
- * @date 2013年12月13日
- * @version v1.0
- * @todo
+ * 
+ * <pre>
  * IBM Websphere MQ链接工厂
  * 整合IBM com.ibm.msg.client.jms.JmsConnectionFactory;
  * 根据IBM API需要设置队列管理器名称,通道名称.
  * 客户端ID为可选参数
- * 默认链接到Websphere MQ为客户端链接模式,默认设置其字符编码集为UTF-8(1381)    
+ * 默认链接到Websphere MQ为客户端链接模式,默认设置其字符编码集为UTF-8(1381) 
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     AbstractConnectionFactory
+ * @see     ConnectionFactory
+ * @see     JmsConnectionFactory
+ * @see     WMQConstants
+ * @since   JDK1.6
  */
 public class WebsphereMQConnectionFactory extends AbstractConnectionFactory implements ConnectionFactory{
 	

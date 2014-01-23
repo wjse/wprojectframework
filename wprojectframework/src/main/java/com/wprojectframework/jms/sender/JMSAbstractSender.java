@@ -1,7 +1,7 @@
 package com.wprojectframework.jms.sender;
+
 import java.io.Serializable;
 import java.util.Map;
-
 import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
@@ -10,18 +10,20 @@ import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 import javax.jms.TopicPublisher;
-
 import com.wprojectframework.jms.JMSAbstractTemplate;
 
 /**
  * 
- * @class JMSAbstractSender.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * JMS抽象发送器
  * 该类提供工公用行为方法
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     JMSAbstractTemplate
+ * @see     Sender
+ * @since   JDK1.6
  */
 public abstract class JMSAbstractSender extends JMSAbstractTemplate implements Sender{
 	

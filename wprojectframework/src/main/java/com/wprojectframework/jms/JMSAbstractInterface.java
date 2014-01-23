@@ -3,12 +3,11 @@ package com.wprojectframework.jms;
 
 /**
  * 
- * @class JMSAbstractInterface.java
- * @author wujia
- * @date 2013-9-25
+ * <pre>JMS公用接口,用于获得链接工厂</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * JMS公用接口,用于获得链接工厂
+ * @date    2014年1月23日
+ * @since   JDK1.6
  */
 public interface JMSAbstractInterface {
 	

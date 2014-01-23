@@ -9,12 +9,17 @@ import com.wprojectframework.util.ArrayUtil;
 
 /**
  * 
- * @class AbstractCacheInterceptor.java
- * @author wujia
- * @date 2013-9-24
+ * <pre>缓存拦截器抽象类</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 缓存拦截器抽象类
+ * @date    2014年1月23日
+ * @see     CacheTemplate
+ * @see     Cache
+ * @see     ProceedingJoinPoint
+ * @see     StringUtils
+ * @see     AopUtil
+ * @see     ArrayUtil
+ * @since   JDK1.6
  */
 public abstract class AbstractCacheInterceptor {
 	

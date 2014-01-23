@@ -1,21 +1,22 @@
 package com.wprojectframework.jms;
 
 import javax.jms.Session;
-
 import org.apache.log4j.Logger;
 
 
 
 /**
  * 
- * @class JMSAbstractTemplate.java
- * @author wujia
- * @date 2013-9-25
- * @version v1.0
- * @todo
+ * <pre>
  * JMS抽象模板类，该类组合JMSConnectionFactory链接工厂，
  * 链接工厂由spring注入。
  * 该类提供生产者和消费者的简单操作，避免sender或receiver出现过多重复代码
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     Session
+ * @since   JDK1.6
  */
 public abstract class JMSAbstractTemplate {
 	

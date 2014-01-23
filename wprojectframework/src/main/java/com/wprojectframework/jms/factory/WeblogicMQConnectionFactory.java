@@ -10,13 +10,18 @@ import org.springframework.jndi.JndiTemplate;
 
 /**
  * 
- * @class WeblogicMQConnectionFactory.java
- * @author wujia
- * @date 2013年12月13日
- * @version v1.0
- * @todo
+ * <pre>
  * Weblogic JMS链接工厂,weblogic通过jndi链接JMS服务器
  * 所以主要聚合了spring jndi模板类进行链接
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     AbstractConnectionFactory
+ * @see     ConnectionFactory
+ * @see     JndiObjectFactoryBean
+ * @see     JndiTemplate
+ * @since   JDK1.6
  */
 public class WeblogicMQConnectionFactory extends AbstractConnectionFactory implements ConnectionFactory{
 	

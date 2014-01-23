@@ -2,12 +2,12 @@ package com.wprojectframework.core;
 
 /**
  * 
- * @class Constants.java
- * @author wujia
- * @date 2013-9-25
+ * <pre>常量接口</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 常量接口
+ * @date    2014年1月23日
+ * @see     
+ * @since   JDK1.6
  */
 public interface Constants {
 	/**

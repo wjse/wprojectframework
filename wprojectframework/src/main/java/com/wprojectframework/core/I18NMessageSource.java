@@ -12,11 +12,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 
 /**
  * 
- * @class I18NMessageSource.java
- * @author wujia
- * @date 2013-6-28
- * @version v1.0
- * @todo  
+ * <pre>
  * 国际化资源文件配置源扩展类
  * 该类对于org.springframework.context.support.ResourceBundleMessageSource
  * 起支撑作用，解决了spring国际化扫描规则单一的短处
@@ -38,6 +34,15 @@ import org.springframework.core.io.support.ResourcePatternResolver;
  *       </property>
  *    </bean>
  * </pre>
+ * </pre>
+ * @author  WuJ
+ * @version v1.0
+ * @date    2014年1月23日
+ * @see     ResourceBundleMessageSource
+ * @see     PathMatchingResourcePatternResolver
+ * @see     ResourcePatternResolver
+ * @see     Resource
+ * @since   JDK1.6
  */
 public class I18NMessageSource extends ResourceBundleMessageSource{
 	

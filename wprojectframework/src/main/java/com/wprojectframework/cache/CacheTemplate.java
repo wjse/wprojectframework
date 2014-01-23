@@ -1,13 +1,13 @@
 package com.wprojectframework.cache;
 
 /**
- * 
- * @class CacheTemplate.java
- * @author wujia
- * @date 2013-9-18
+ * <pre>缓存模板接口</pre>
+ * @author  WuJ
  * @version v1.0
- * @todo
- * 缓存模板接口
+ * @date    2014年1月23日
+ * @see     MapcacheTemplate
+ * @see     MemcachedTemplate
+ * @since   JDK1.6
  */
 public interface CacheTemplate {
 	
