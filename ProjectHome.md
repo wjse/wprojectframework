@@ -1,0 +1,1 @@
+wprojectframework主要在spring,springmvc,mybatis,hibernate,cache,jms的基础之上进行封装，将不断更新达到学习目的
